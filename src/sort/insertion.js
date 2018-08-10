@@ -1,4 +1,4 @@
-// 插入类排序
+// 插入排序
 
 export default {
   /**
@@ -11,6 +11,7 @@ export default {
    * 6. 重复步骤 2~5
    * 空间复杂度：O(1)
    * 时间复杂度：O(n^2)
+   * 算法稳定性：稳定
    * @param {Array} arr 待排序数组
    * @param {Number} order 升序/降序
    * @return {Array}
@@ -37,13 +38,14 @@ export default {
    * 通过加入缩小增量的概念改进插入排序算法
    * 空间复杂度：O(1)
    * 时间复杂度：O(n*log2(n))
+   * 算法稳定性：不稳定，因为在根据子表进行插入排序的过程中，相同记录的顺序有可能会被交换，即 55a 55b 有可能变成 55b 55a
    * @param {Array} arr 待排序数组
    * @param {Number} order 升序/降序
    * @return {Array}
    */
   shellSort(arr, order = "ASC") {
     var i, j, gap, val;
-    for (gap = arr.length / 2; gap > 0; gap /= 2) {     // 初始增量等于数组长度除以2
+    for (gap = arr.length / 2; gap > 0; gap /= 2) {     // 按照每次缩小两倍的规则动态生成增量
       for (i = 1; gap*i < arr.length; i++) {      // 根据增量遍历子表
         val = arr[gap*i];
         for (j = i - 1; j >= 0; j--) {      // 跟插入排序一样，需要右移数据，只不过仅在子表右移
@@ -58,5 +60,6 @@ export default {
         arr[gap*(j+1)] = val;
       }
     }
+    return arr;
   }
 }
