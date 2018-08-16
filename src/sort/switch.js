@@ -24,7 +24,7 @@ function swap(a, b) {
  * @param {Number} order 升序/降序
  * @return {Array}
  */
-bubbleSort(arr, order = "ASC") {
+function bubbleSort(arr, order = "ASC") {
   var i, j, flag = true;      // flag 用于表示该趟排序是否发生了交换，若未发生交换则说明数组已有序
   for (i = 1; i < arr.length && flag; i++) {      // flag为true时表示有交换，则再进行排序，否则终止循环
     flag = false;
@@ -94,7 +94,7 @@ function qSplit(low, high) {
  * @param {Number} order 升序/降序
  * @return {Array}
  */
-quickSort(arr, order = "ASC") {
+function quickSort(arr, order = "ASC") {
   const len = arr.length;
   if (len < 2) return arr;
   const pivot = arr[0], left = [], right = [];
