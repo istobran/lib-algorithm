@@ -13,7 +13,7 @@
  * @param {Number} order 升序/降序
  * @return {Array}
  */
-function straightSelectionSort(arr, order="ASC") {
+function straightSelectionSort(arr, order = "ASC") {
   var i, j, tmp, tmpidx;
   for (i = 0; i < arr.length - 1; i++) {    // 外循环只需执行 n-1 次，因为前面排好后，最后一个数必定有序
     tmpidx = i;
@@ -34,6 +34,66 @@ function straightSelectionSort(arr, order="ASC") {
   return arr;
 }
 
+/**
+ * 堆排序
+ * 空间复杂度：O(1)
+ * 时间复杂度：O(nlogn)
+ * 算法稳定性：不稳定
+ * @param {Array} arr 待排序数组
+ * @param {Number} order 升序/降序
+ * @return {Array}
+ */
+function heapSort(arr, order = "ASC") {
+  /**
+   * 对数组内两个数进行交换
+   * @param {Number} a 待交换下标1
+   * @param {Number} b 待交换下标2
+   */
+  function swap(a, b) {
+    var tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+  }
+  /**
+   * 筛选法堆调整
+   * 调整区间示意图：[start, end)
+   * @param {Number} start 调整下标上界
+   * @param {Number} end 调整下标下界
+   */
+  function sift(start, end) {
+    var dad = start, son = start * 2 + 1;
+    if (son >= end) return;   // 初次调用过程中不可能发生 son >= end，但递归过程中会发生 son >= end
+    if (order === "ASC") {  // 如果要升序，则构建大顶堆
+      if (son+1 < end && arr[son+1] > arr[son]) {   // 比较子节点的兄弟节点
+        son++;      // 把下标移到兄弟节点位置
+      }
+      if (arr[son] > arr[dad]) {    // 比较父子节点
+        swap(dad, son);
+        sift(son, end);     // 对子节点再进行堆调整
+      }
+    } else if (order === "DESC") {    // 如果要降序，则构建小顶堆
+      if (son+1 < end && arr[son+1] < arr[son]) {   // 比较子节点的兄弟节点
+        son++;      // 把下标移到兄弟节点位置
+      }
+      if (arr[son] < arr[dad]) {    // 比较父子节点
+        swap(dad, son);
+        sift(son, end);     // 对子节点再进行堆调整
+      }
+    }
+  }
+  // 自底向上法建立初始堆
+  for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {
+    sift(i, arr.length)
+  }
+  // 将顶点值与最后值进行交换，再重新调整堆
+  for (let i = arr.length - 1; i > 0; i--) {
+    swap(0, i);       // 0 是顶点值，i 是有序数组存放点
+    sift(0, i);       // 要注意，sift 函数的 end 是开区间，所以这里应该传入 i 而不是 i-1
+  }
+  return arr;
+}
+
 export default {
   straightSelectionSort,
+  heapSort
 }

@@ -40,7 +40,7 @@ function straightInsertionSort(arr, order = "ASC") {
  * 2. 以步长为间隔对序列进行排序；
  * 3. 重复步骤2直到步长为1。
  * 空间复杂度：O(1)
- * 时间复杂度：O(n*log2(n))
+ * 时间复杂度：O(nlogn)
  * 算法稳定性：不稳定，因为在根据子表进行插入排序的过程中，相同记录的顺序有可能会被交换，即 55a 55b 有可能变成 55b 55a
  * @param {Array} arr 待排序数组
  * @param {Number} order 升序/降序
