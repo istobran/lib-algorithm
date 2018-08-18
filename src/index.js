@@ -15,3 +15,8 @@ void function(global) {
     }
   }
 }(window)
+
+// 查找算法
+// 排序算法
+// 线性表
+// 动态规划问题

@@ -49,6 +49,7 @@ function compare(tree, a, b, order) {
  * 是对直接选择排序的一种改进，分别对相邻两个数进行两两比较，反复求出冠军的一种算法
  * 时间复杂度：O(nlogn)
  * 空间复杂度：O(n)
+ * 算法稳定性：不稳定
  * @param {Array} arr 待排序数组
  * @param {String} order 升序/降序
  * @return {Array}
