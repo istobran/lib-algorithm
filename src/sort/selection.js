@@ -10,7 +10,7 @@
  * 时间复杂度：O(n^2)
  * 算法稳定性：不稳定
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function straightSelectionSort(arr, order = "ASC") {
@@ -40,7 +40,7 @@ function straightSelectionSort(arr, order = "ASC") {
  * 时间复杂度：O(nlogn)
  * 算法稳定性：不稳定
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function heapSort(arr, order = "ASC") {

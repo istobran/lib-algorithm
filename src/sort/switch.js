@@ -21,7 +21,7 @@ function swap(a, b) {
  * 时间复杂度：O(n^2)
  * 算法稳定性：稳定
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function bubbleSort(arr, order = "ASC") {
@@ -91,7 +91,7 @@ function qSplit(low, high) {
  * 时间复杂度：平均 O(nlogn)
  * 算法稳定性：不稳定
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function quickSort(arr, order = "ASC") {

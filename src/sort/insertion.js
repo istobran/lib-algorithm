@@ -12,7 +12,7 @@
  * 时间复杂度：O(n^2)
  * 算法稳定性：稳定
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function straightInsertionSort(arr, order = "ASC") {
@@ -43,7 +43,7 @@ function straightInsertionSort(arr, order = "ASC") {
  * 时间复杂度：O(nlogn)
  * 算法稳定性：不稳定，因为在根据子表进行插入排序的过程中，相同记录的顺序有可能会被交换，即 55a 55b 有可能变成 55b 55a
  * @param {Array} arr 待排序数组
- * @param {Number} order 升序/降序
+ * @param {String} order 升序/降序
  * @return {Array}
  */
 function shellSort(arr, order = "ASC") {
