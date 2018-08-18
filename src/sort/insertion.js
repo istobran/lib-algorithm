@@ -66,7 +66,7 @@ function shellSort(arr, order = "ASC") {
   return arr;
 }
 
-export default {
+export {
   straightInsertionSort,
   shellSort
 }

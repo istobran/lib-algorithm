@@ -1,4 +1,6 @@
 // 选择排序
+import { tournamentSort } from "./tournament";
+
 
 /**
  * 直接选择排序
@@ -36,6 +38,7 @@ function straightSelectionSort(arr, order = "ASC") {
 
 /**
  * 堆排序
+ * 对锦标赛排序的一种改进，引入了堆的概念
  * 空间复杂度：O(1)
  * 时间复杂度：O(nlogn)
  * 算法稳定性：不稳定
@@ -93,7 +96,8 @@ function heapSort(arr, order = "ASC") {
   return arr;
 }
 
-export default {
+export {
   straightSelectionSort,
+  tournamentSort,
   heapSort
 }

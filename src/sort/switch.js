@@ -112,7 +112,7 @@ function quickSort(arr, order = "ASC") {
   return quickSort(left, order).concat(pivot, quickSort(right, order));
 }
 
-export default {
+export {
   bubbleSort,
   quickSort
 }

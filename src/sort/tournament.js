@@ -108,3 +108,7 @@ function updateTree(tree, idx, order) {
     tree[Math.floor((i-1)/2)] = compare(tree, i, enemy, order);
   }
 }
+
+export {
+  tournamentSort
+}
