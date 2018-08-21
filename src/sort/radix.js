@@ -1,5 +1,3 @@
-// 基数排序
-
 /**
  * 基数排序
  * 时间复杂度：O(d(n+rd))
@@ -10,22 +8,30 @@
  * @return {Array}
  */
 function radixSort(arr, order = "ASC") {
-  const max = Math.max(...arr);   // 寻找最大值，确定位数
+  let mirror = arr.slice(0);      // 复制一份一模一样的数组
+  const max = Math.max(...mirror);   // 寻找最大值，确定位数
   let digit = `${max}`.length;  // 最大值的位数
   for (let start = 10, buckets = []; digit > 0; buckets = [], digit--, start *= 10) {   // 对每一位都进行分配和收集过程
-    for (let i = 0; i < arr.length; i++) {    // 进行一趟分配
-      const index = arr[i] % start;
+    for (let i = 0; i < mirror.length; i++) {    // 进行一趟分配
+      const index = mirror[i] % start;
       if (!buckets[index]) buckets[index] = [];
-      buckets[index].push(arr[i]);
+      buckets[index].push(mirror[i]);
     }
-    arr.splice(0, arr.length);    // 清空arr
-    arr = Array.prototype.concat.apply(arr, buckets).filter(Number);   // 进行一趟收集
-    // for (let i = 0; i < buckets.length; i++) {   // 进行一趟收集
-    //   if (buckets[i]) arr = arr.concat(buckets[i]);
-    // }
+    mirror.splice(0, mirror.length);
+    if (order === "ASC") {   // 进行一趟收集，升序
+      mirror = Array.prototype.concat.apply(mirror, buckets).filter(v => !isNaN(Number(v)));    // 防止 0 被过滤
+    } else {  // 进行一趟收集，降序
+      for (let i = buckets.length - 1; i >= 0; i--) {
+        while(Array.isArray(buckets[i]) && buckets[i].length) {    // 倒序插入值
+          mirror.push(buckets[i].pop());
+        }
+      }
+    }
   }
+  arr.splice(0, arr.length, ...mirror);
   return arr;
 }
 
-const arr = [1, 10, 100, 1000, 98, 67, 3, 28, 67, 888, 777]
-console.log(radixSort(arr))
+export {
+  radixSort
+}
