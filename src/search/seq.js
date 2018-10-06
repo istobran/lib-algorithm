@@ -1,12 +1,13 @@
 /**
  * 顺序查找
- * @param {Number} target 待处理的列表
- * @return {Number}   返回查找到的 Index
+ * @param {Number} target 要查找的目标
+ * @return {Number}   返回查找到的 Index（-1为找不到）
  */
 function seqSearch(target) {
   for (let i = 0; i < this.length; i++) {
     if (this[i] === target) return i;
   }
+  return -1;
 }
 Array.prototype.seqSearch = seqSearch;
 
